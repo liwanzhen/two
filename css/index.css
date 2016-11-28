@@ -1,1 +1,33 @@
 @charset "UTF-8";
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,sans-serif;
+	background-color: #fff;
+	font-size: 14px;
+	color: #333;
+	line-height: 1.5;
+}
+
+ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:focus,
+a:hover,
+a:active {
+	color:
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+}
