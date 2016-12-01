@@ -6,19 +6,23 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="../js/bootstrap-3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/import.css">
 </head>
 <body>
-	<nav class="navbar">
+	<nav class="navbar navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">KINGNEN</a>
-				<h1>主页</h1>
+				<a href="#" class="navbar-brand fc-30">KINGNEN</a>
+				<h1 class="fc-28">基于云平台的能源管理系统</h1>
 			</div>
 			<div>
 				<ul class="nav navbar-nav pull-right">
+					<li>
+						<a href="#">
+						</a>
+					</li>
 					<li class="active">
-						<a href="">警告</a>
+						<a href=""><i class="icon-bell"></i>警告</a>
 					</li>
 					<li class="">
 						<a href="">用户<span>管理员</span></a>
@@ -40,6 +44,7 @@
 
 					<div class="panel-heading">
 						<h2 class="panel-title">
+							<i class="icon-th-large-outline"></i>
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapse">综合首页</a>
 							<span class="retract"></span>
 						</h2>
@@ -48,6 +53,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h2 class="panel-title">
+							<i class="icon-th-large-outline"></i>
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapsea">能源监测</a>
 							<span class="spread"></span>
 						</h2>
@@ -75,6 +81,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h2 class="panel-title">
+							<i class="icon-th-large-outline"></i>
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapseb">能源监测</a>
 							<span class="spread"></span>
 						</h2>
@@ -99,18 +106,49 @@
 						</ul>
 					</div>
 				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<i class="icon-th-large-outline"></i>
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapsec">能源监测</a>
+							<span class="spread"></span>
+						</h2>
+					</div>
+					<div id="collapsec" class="panel-collapse collapse">
+						<ul class="panel-body nav">
+							<li class="">
+								<a href="#">计量网络</a>
+							</li>
+							<li class="">
+								<a href="#">通讯网络图</a>
+							</li>
+							<li class="">
+								<a href="#">实时数据</a>
+							</li>
+							<li class="">
+								<a href="#">3D展示</a>
+							</li>
+							<li class="">
+								<a href="#">环境监测</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</aside>
 		<div class="right-content">
 			<div class="title">
 				<div class="pull-left">
-					<span class="spread"></span>
-					<h1 class=>综合首页</h1>
+					<i class="icon-play3"></i>
+					<h1 class='fc-18'>综合首页</h1>
 					<span>总体能耗情况分析</span>
 				</div>
 				<div class="pull-right">
 					<form>
-						<input type="date" name="time" class="set-time">
+						<div class="form-group">
+							<label>选择时间：</label>
+							<input type="date" name="time" class="set-time">
+						</div>
 					</form>
 				</div>
 			</div>
