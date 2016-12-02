@@ -1,0 +1,412 @@
+<!-- <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>画图</title>
+        <style>
+            #divContainer{
+                margin-top: 20px;
+                text-align: center;
+            }
+            #cv{
+                width: 600px;
+                height: 400px;
+                border-bottom: 2px solid #b2a999;
+                border-left: 2px solid #b2a999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="divContainer">
+            铝锭价走势图<br/>
+            <canvas id="cv">你的设备不支持图表数据显示</canvas>
+        </div>
+
+        <script>
+            (function(){
+                window.onload = function(){
+
+                    //数据源
+                    var dict = [
+                        {x: "2015-04-24", y: 13400},
+                        {x: "2015-04-25", y: 13380},
+                        {x: "2015-04-26", y: 13370},
+                        {x: "2015-04-27", y: 13370},
+                        {x: "2015-04-28", y: 13380}
+                    ]
+
+                    //数据源提取
+                    var len = dict.length;
+                    var xArr = [], yArr = [], tmp_yArr = [];
+                    for(var i=0; i<len; i++){
+                        xArr.push(i * 60);
+                        tmp_yArr.push(dict[i].y);
+                    }
+                    var tmp_minY = Math.min.apply(Math, tmp_yArr);//最小值
+                    var tmp_maxY = Math.max.apply(Math, tmp_yArr);//最大值
+                    if(tmp_maxY - tmp_minY <= 100){
+                        for(var i=0; i<len; i++){
+                            yArr.push(tmp_yArr[i] - tmp_minY + 50);//与最小的做比较
+                        }
+                    }
+                    else{//如果相差太大会导致图表不美观
+                        for(var i=0; i<len; i++){
+                            yArr.push(tmp_yArr[i] / 500);
+                        }
+                    }
+                    var minY = Math.min.apply(Math, yArr);
+                    var maxY = Math.max.apply(Math, yArr);
+
+                    //canvas 准备
+                    var canvas = document.getElementById("cv");//获取canvas画布
+                    var ctx  = canvas.getContext("2d");
+
+                    //画折线
+                    for(var i=0 ; i<len; i++){
+                        var x = xArr[i];
+                        var y = maxY - yArr[i] + minY;
+                        if(i === 0){
+                            ctx .moveTo(x, y);
+                        }
+                        else{
+                            ctx .lineTo(x, y);
+                        }
+                    }
+                    ctx .stroke();
+
+                    //画点
+                    for(var i=0; i<len; i++){
+                        var x = xArr[i];
+                        var y = maxY - yArr[i] + minY;
+                        var xMemo = dict[i].x;
+                        var yMemo = dict[i].y;
+                        ctx.beginPath();
+                        ctx.fillStyle = "#000";
+                        ctx.arc(x, y, 2, 0, 2*Math.PI);//画点
+                        ctx.fill();
+                        ctx.fillText(yMemo, x + 3, y - 10);
+                        ctx.fillText(xMemo, x + 3, canvas.height - 10, 40);//画文字
+                    }
+
+                }
+            })();
+        </script>
+    </body>
+</html> -->
+
+
+<!-- <!Doctype Html>
+ <html>
+  <head>
+   <title>Line Chart Demo</title>
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+   <style>
+    body{background-color:#bfd0c4;}
+    canvas{background-color:white;position:absolute;top:50%;left:50%;margin-left:-350px;margin-top:-250px;box-shadow: 3px 3px 3px #7e7a7c;}
+  </style>
+ </head>
+ <body>
+  <canvas width="700" height="400" id="canvas"> </canvas>
+<script>
+window.onload = function(){
+
+  var multiData = {values:[
+ { value0:[
+   {x:"Jan",y:5},
+   {x:"Feb",y:5},
+   {x:"Mar",y:80},
+   {x:"Apr",y:10},
+   {x:"May",y:30},
+   {x:"Jun",y:30},
+   {x:"Jul",y:60},
+   {x:"Aug",y:10}
+  ]},
+  { value1:[
+    {x:"Jan",y:50},
+    {x:"Feb",y:40},
+    {x:"Mar",y:60},
+    {x:"Apr",y:10},
+    {x:"May",y:20},
+    {x:"Jun",y:10},
+    {x:"Jul",y:40},
+    {x:"Aug",y:10}
+   ]}
+  ]
+ }//必须按照这个格式定义数据，关键字values value0 value1 ......
+   /*
+    *@param0: canvas 的id
+    *@param1: json 数据
+    *@param2: 坐标距离画布的间隙padding
+    *@param3: 如果只有一条数据时数据的颜色，多条数据颜色随机
+    *@param4: 点的颜色
+    *@param5: 是否绘制背景线
+    *@param6: 是否是多条数据
+    */
+   //先定义数据线的名字，再绘制数据
+   LineChart.setKey(["2013","2014"]);
+   LineChart.setData("canvas",multiData,60,"red","#333",true,true);
+ }
+
+   var LineChart={
+    keynames:[],//数据信息数组
+    can:undefined,
+    ctx:undefined,
+    width:undefined,
+    lineColor:undefined,
+    dotColor:undefined,
+    isBg:false,
+    isMultiData:false,
+    setData:function(canId,data,padding,lineColor,dotColor,isBg,isMultiData){
+      this.lineColor = lineColor;
+      this.dotColor = dotColor;
+      this.can = document.getElementById(canId);
+      this.ctx = this.can.getContext("2d");
+      this.isBg = isBg;
+      this.isMultiData = isMultiData;
+      this.drawXY(data,0,padding,this.can);
+
+    },
+   isMultiData:function(data){
+      if(data.values.length>1){
+        this.isMultiData = true;
+       }
+    },//是否是多条数据线
+
+    drawXY:function(data,key,padding,can){
+    this.ctx.lineWidth="4";
+    this.ctx.strokeStyle="black";
+    this.ctx.font = 'italic 15px sans-serif';
+    this.ctx.beginPath();
+    this.ctx.moveTo(padding,0)
+    this.ctx.lineTo(padding,can.height-padding);
+    this.ctx.lineTo(can.width,can.height-padding);
+    this.ctx.stroke();
+    var perwidth = this.getPixel(data,key,can.width,padding);//x 轴每一个数据占据的宽度
+    var maxY =  this.getMax(data,0,this.isMultiData);//获得Y轴上的最大值
+    var yPixel = this.getYPixel(maxY,can.height,padding).pixel;
+    var ycount = this.getYPixel(maxY,can.height,padding).ycount;
+    for( var i=0,ptindex;i< data.values[key]["value"+key].length;i++ ){
+        ptindex = i+1;
+        var x_x = this.getCoordX(padding,perwidth,ptindex);
+        var x_y = can.height-padding+20;
+        this.ctx.fillText(data.values[key]["value"+key][i].x,x_x,x_y,perwidth);
+    }
+    this.ctx.textAlign = "right"//y轴文字靠右写
+    this.ctx.textBaseline = "middle";//文字的中心线的调整
+    for(var i=0;i< ycount/10;i++){
+       this.ctx.fillText(i*10,padding-10,(ycount/10-i)*10*yPixel,perwidth);
+    }
+    if(this.isBg){
+       var x =  padding;
+       this.ctx.lineWidth="1";
+       this.ctx.strokeStyle="#e8e8e8";
+       for( var i=0;i< ycount/10;i++ ){
+        var y = (ycount/10-i)*10*yPixel;
+        this.ctx.moveTo(x,y);
+        this.ctx.lineTo(can.width,y);
+        this.ctx.stroke();
+      }
+     }//选择绘制背景线
+    this.ctx.closePath();
+    this.drawData(data,0,padding,perwidth,yPixel,this.isMultiData);
+    },//绘制XY坐标 线 以及点
+
+    drawData:function(data,key,padding,perwidth,yPixel,isMultiData,lineColor){
+    if(!isMultiData){
+        var keystr = "value"+key;
+        this.ctx.beginPath();
+        this.ctx.lineWidth="2";
+        if(arguments[6]){
+            this.ctx.strokeStyle=lineColor;
+           }else{
+           this.ctx.strokeStyle=this.lineColor;
+             }
+        var startX = this.getCoordX(padding,perwidth,0);
+        var startY = this.getCoordY(padding,yPixel,data.values[key][keystr][0].y);
+        this.ctx.beginPath();
+        this.ctx.lineWidth="2";
+        for( var i=0;i< data.values[key][keystr].length;i++ ){
+          var x = this.getCoordX(padding,perwidth,i+1);
+          var y = this.getCoordY(padding,yPixel,data.values[key][keystr][i].y);
+          this.ctx.lineTo(x,y);
+        }
+        this.ctx.stroke();
+        this.ctx.closePath();
+        /*下面绘制数据线上的点*/
+        this.ctx.beginPath();
+        this.ctx.fillStyle=this.dotColor;
+        for( var i=0;i< data.values[key][keystr].length;i++ ){
+           var x = this.getCoordX(padding,perwidth,i+1);
+           var y = this.getCoordY(padding,yPixel,data.values[key][keystr][i].y);
+           this.ctx.moveTo(x,y);
+           this.ctx.arc(x,y,3,0,Math.PI*2,true);//绘制数据线上的点
+           this.ctx.fill();
+        }
+        this.ctx.closePath();
+        }else{//如果是多条数据线
+           for( var i=0;i< data.values.length;i++ ){
+            var color = "rgb("+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+",
+                         "+parseInt(Math.random()*256)+")";
+            LineChart.drawData(data,i,padding,perwidth,yPixel,false,color);
+            LineChart.drawKey(color,this.keynames[i],padding,i);
+             }
+          }
+        },//绘制数据线和数据点
+        getPixel:function(data,key,width,padding){
+          var count = data.values[key]["value"+key].length;
+          return (width-20-padding)/(count+(count-1)*1.5);
+        },//宽度
+        getCoordX:function(padding,perwidth,ptindex){//下标从1开始 不是从0开始
+            return 2.5*perwidth*ptindex+padding+10-2*perwidth;
+        },//横坐标X 随ptindex 获得
+        getCoordY:function(padding,yPixel,value){
+            var y = yPixel*value;
+            return this.can.height-padding-y;
+        },//纵坐标X 随ptindex 获得(注意 纵坐标的算法是倒着的因为原点在最上面)
+         getYPixel:function(maxY,height,padding){
+            var ycount = (parseInt(maxY/10)+1)*10+10;//y轴最大值
+            return {pixel:(height-padding)/ycount,ycount:ycount};
+        },//y轴的单位长度
+
+          getMax:function(data,key,isMultiData){
+            if(!isMultiData){
+                var maxY = data.values[key]["value"+key][0].y;
+              var length = data.values[key]["value"+key].length;
+              var keystr = "value"+key;
+              for( var i=1;i< length;i++ ){
+                if(maxY< data.values[key][keystr][i].y) maxY=data.values[key][keystr][i].y;
+              }
+              return maxY;//返回最大值 如果不是多数据
+              }else{
+                var maxarr=[];
+                var count = data.values.length;//多条数据的数据长度
+                for(var i=0;i< count;i++){
+                maxarr.push(LineChart.getMax(data,i,false));
+                }
+                var maxvalue = maxarr[0];
+                for(var i=1;i< maxarr.length;i++){
+                maxvalue = (maxvalue< maxarr[i])?maxarr[i]:maxvalue;
+                }
+                return maxvalue;
+            }//如果是多数据
+           },
+
+        setKey:function(keynames){//keynames 是数组
+            for(var i=0;i< keynames.length;i++){
+                this.keynames.push(keynames[i]);//存入数组中
+            }
+         },
+
+    drawKey:function(color,keyname,padding,lineindex){
+            var x = padding+10;
+            var y = this.can.height - padding+20+13*(lineindex+1);
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = color;
+            this.ctx.font="10px";
+            this.ctx.moveTo(x,y);
+            this.ctx.lineTo(x+50,y);
+            this.ctx.fillText(":"+keyname,x+80,y,30);
+            this.ctx.stroke();
+            this.ctx.closePath();
+        }
+  }
+</script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+  <canvas id="mycanvas"></canvas>
+    <script type="text/javascript">
+            var json={
+                data:[{time:"2015-07-01",num:"120"},{time:"2015-07-02",num:"180"},{time:"2015-07-03",num:"230"},{time:"2015-07-04",num:"340"},{time:"2015-07-05",num:"640"},{time:"2015-07-06",num:"750"},{time:"2015-07-07",num:"590"},{time:"2015-07-08",num:"600"},{time:"2015-07-09",num:"600"},{time:"2015-07-10",num:"700"}
+                    ]
+            }
+            var canvas=document.getElementById("mycanvas");
+            var width=650;
+            var height=450;
+            canvas.width=width;
+            canvas.height=height;
+            var ctx=canvas.getContext("2d");
+            ctx.beginPath();
+            var spaceX=width*0.1;
+            var spaceY=height*0.1;
+            if(spaceX<20)
+            {
+                spaceX=spaceY=20;
+            }
+            ctx.moveTo(spaceX,0.9*height);
+            ctx.lineTo(width,0.9*height);
+            ctx.lineTo(59/60*width,7/8*height);
+            ctx.moveTo(width,0.9*height);
+            ctx.lineTo(59/60*width,37/40*height);
+            ctx.moveTo(spaceX,0.9*height);
+            ctx.lineTo(spaceX,0);
+            ctx.lineTo(1/12*width,1/40*height);
+            ctx.moveTo(spaceX,0);
+            ctx.lineTo(7/60*width,1/40*height);
+            ctx.fillText("日期",19/20*width,0.95*height);
+            ctx.fillText("人数",0.05*width,0.05*height);
+            for(var i=1;i<11;i++)
+            {
+                ctx.moveTo(spaceX+3/40*width*i,0.9*height);
+                ctx.lineTo(spaceX+3/40*width*i,7/8*height);//画横刻度
+            }
+            for(var i=1;i<11;i++)
+            {
+                ctx.moveTo(0.1*width,0.9*height-3/40*height*i);
+                ctx.lineTo(7/60*width,0.9*height-3/40*height*i);//画纵刻度
+            }
+            for(var i=0;i<10;i++)
+            {
+                var str=json['data'][i]['time'];
+                str.substring(0,1);
+                ctx.fillText(json['data'][i]['time'].substring(5,10),spaceX+3/40*width*(i+1)-15,0.94*height);//横刻度值
+            }
+           ctx.fillText(json['data'][0]['time'].substring(0,4),19/20*width,0.98*height)
+            var max=json['data'][0]['num'];
+            var min=json['data'][0]['num'];
+            for(var i=1;i<10;i++)
+            {
+                if(json['data'][i]['num']>max)
+                {
+                    var k=i;
+                    max=json['data'][k]['num'];
+                }
+                if(json['data'][i]['num']<min)
+                {
+                    var j=i;
+                    min=json['data'][j]['num'];
+                }
+            }
+            var spaceing=(max-min)/7;
+            for(var i=1;i<11;i++)
+            {
+                var number=spaceing*(i-1)+parseInt(min);
+                ctx.fillText(number,0.05*width,0.91*height-3/40*height*i);//纵向刻度值
+            }
+            ctx.stroke();
+            ctx.closePath();
+            ctx.moveTo(spaceX+3/40*width,33/40*height-((parseInt(json['data'][0]['num'])-parseInt(min))*height)/1200);
+            // ctx.arc(spaceX+3/40*width,33/40*height-((parseInt(json['data'][0]['num'])-parseInt(min))*height)/1200,3,0,2*Math.PI);
+
+            for(var i=1;i<10;i++)
+            {
+                ctx.lineWidth=4;
+                 ctx.lineTo(spaceX+3/40*width*(i+1),33/40*height-((parseInt(json['data'][i]['num'])-parseInt(min))*height)/1200);//描点
+                 // ctx.fillStyle="red";
+                 //  ctx.quadraticCurveTo(spaceX+3/40*width*(i+1),33/40*height-((parseInt(json['data'][i]['num'])-parseInt(min))*height)/1200,spaceX+3/40*width*(i+2),33/40*height-((parseInt(json['data'][i+1]['num'])-parseInt(min))*height)/1200);
+                 // ctx.arc(spaceX+3/40*width*(i+1),33/40*height-((parseInt(json['data'][i]['num'])-parseInt(min))*height)/1200,3,0,2*Math.PI);
+
+            }
+            ctx.stroke();
+    </script>
+  </body>

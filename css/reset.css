@@ -10,7 +10,8 @@ body {
 	font-size: 14px;
 	color: #333;
 	line-height: 1.5;
-	padding-top: 70px;
+	min-width: 992px!important;
+	/* padding-top: 70px; */
 }
 
 ul li {
@@ -98,22 +99,20 @@ i[class*="icon-"] {
     border-bottom: 4px solid transparent;
 }
 
-.track {
-	padding-left: 150px;
+
+/*  */
+@media screen and (max-width: 992px) {
+	body {
+		min-width: 992px;
+	}
+	body .container {
+		width: 970px !important;
+		padding: 0 15px;
+	}
 }
 
-.track aside,
-.track .right-content {
-    display: inline-block;
-    zoom: 1;
-    float: left;
-}
-
-.track aside {
-	width: 150px;
-	margin-left: -150px;
-}
-
-.track .right-content {
-	width: 100%;
+@media (min-width: 768px) {
+	.container {
+		width: 970px !important;
+	}
 }
