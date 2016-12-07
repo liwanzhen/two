@@ -136,3 +136,8 @@
 .right-content .title .pull-left span {
 	color: #333;
 }
+
+.line-chart {
+	width:800px;
+	height:400px;
+}
