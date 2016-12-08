@@ -1,14 +1,14 @@
     var json={
-                data:[{time:"2015-07-01",num:"120"},
-                      {time:"2015-07-02",num:"180"},
-                      {time:"2015-07-03",num:"230"},
-                      {time:"2015-07-04",num:"340"},
-                      {time:"2015-07-05",num:"640"},
-                      {time:"2015-07-06",num:"750"},
-                      {time:"2015-07-07",num:"590"},
-                      {time:"2015-07-08",num:"600"},
-                      {time:"2015-07-09",num:"600"},
-                      {time:"2015-07-10",num:"700"}
+                data:[{time:"2016-07-01",num:"120"},
+                      {time:"2016-07-02",num:"180"},
+                      {time:"2016-07-03",num:"230"},
+                      {time:"2016-07-04",num:"340"},
+                      {time:"2016-07-05",num:"640"},
+                      {time:"2016-07-06",num:"750"},
+                      {time:"2016-07-07",num:"590"},
+                      {time:"2016-07-08",num:"600"},
+                      {time:"2016-07-09",num:"600"},
+                      {time:"2016-07-10",num:"700"}
                     ]
             }
             var canvas=document.getElementById("mycanvas");
@@ -31,7 +31,7 @@
             ctx.lineTo(59/60*width,37/40*height);
             ctx.moveTo(spaceX,0.9*height);
             ctx.lineTo(spaceX,0);
-            ctx.lineTo(1/12*width,1/40*height);
+            ctx.lineTo(1/12*width,1/40*height);y  
             ctx.moveTo(spaceX,0);
             ctx.lineTo(7/60*width,1/40*height);
             ctx.fillText("日期",19/20*width,0.95*height);
@@ -62,7 +62,7 @@
                     var k=i;
                     max=json['data'][k]['num'];
                 }
-                if(json['data'][i]['num']<min)
+                if(json['data'][i]['num']<min) 
                 {
                     var j=i;
                     min=json['data'][j]['num'];

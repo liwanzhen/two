@@ -1,7 +1,7 @@
 {
   "name": "two",
   "version": "1.0.0",
-  "description": "my first package",
+  "description": "[首页](https://liwanzhen.github.io/two/html/index.html)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,13 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/liwanzhen/two.git"
   },
-  "keywords": [
-    "two"
-  ],
   "author": "liwanzhen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/liwanzhen/two/issues"
   },
-  "homepage": "https://github.com/liwanzhen/two#readme"
+  "homepage": "https://github.com/liwanzhen/two#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }

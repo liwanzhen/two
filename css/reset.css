@@ -75,6 +75,14 @@ i[class*="icon-"] {
 	font-size: 30px;
 }
 
+.gray {
+	color: gray;
+}
+
+.c-main {
+	color: #249911;
+}
+
 
 /* 收缩和展开图标 */
 .retract,.spread {
