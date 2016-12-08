@@ -9,3 +9,7 @@
 [Koala基础样式](https://github.com/Alsiso/Koala/blob/master/src/normal.css)
 
 [前端规范](http://zjaisino.github.io/plugin.html)
+
+[gulp入门教程](http://www.ydcss.com/archives/18)
+
+[gulp 配置](http://www.cnblogs.com/2050/p/4198792.html)
