@@ -31,7 +31,7 @@
             ctx.lineTo(59/60*width,37/40*height);
             ctx.moveTo(spaceX,0.9*height);
             ctx.lineTo(spaceX,0);
-            ctx.lineTo(1/12*width,1/40*height);y  
+            ctx.lineTo(1/12*width,1/40*height);  
             ctx.moveTo(spaceX,0);
             ctx.lineTo(7/60*width,1/40*height);
             ctx.fillText("日期",19/20*width,0.95*height);

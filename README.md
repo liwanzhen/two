@@ -15,3 +15,11 @@
 [gulp 配置](http://www.cnblogs.com/2050/p/4198792.html)
 
 [下划线滑动](https://segmentfault.com/q/1010000004938549)
+
+echo "# html" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:liwanzhen/html.git
+git push -u origin master
+sass安装失败时npm install -g cnpm --registry=https://registry.npm.taobao.org  

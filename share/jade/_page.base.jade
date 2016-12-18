@@ -1,0 +1,30 @@
+extends _page.html
+
+block css
+	link(rel="stylesheet", type="text/css", href="../../include/bootstrap-3.3.5/css/bootstrap.min.css")
+	link(rel="stylesheet", type="text/css", href="dahao.min.css")
+	block spec-css-js
+		// 独立css或js
+
+block body
+	// 基本页面定义
+	block header
+		include _header
+			// 公用头部
+	block banner
+		// 页面顶部banner
+	block screening
+		// 分类
+	block main
+		// 页面主体内容
+	block feature-btn
+		include _feature-btn
+			// 页面右侧功能按钮
+	block footer
+		include _footer
+			// 公用尾部
+block script
+	script(src="../../include/jquery-2.1.4/jquery.min.js")
+	script(src="../../include/bootstrap-3.3.5/js/bootstrap.min.js")
+	block spec-script
+		//独立js

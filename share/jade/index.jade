@@ -1,0 +1,484 @@
+block variables
+	- var PAGE_TITLE = '首页';
+	- var PAGE_MODIFIERS = 'index';
+
+extends _page.base-unlogin
+
+block static
+	meta(name="viewport", content="width=device-width, initial-scale=1")
+
+block h1_block
+	h1.sr-only 大好网站
+
+block main
+	include _pendant
+	include _pendant-zm
+	.container.content
+		.banner.column
+			//- 轮播图
+			#carousel-example-generic.carousel.slide(style="touch-action:pan-y;-webkit-user-select:none;-webkit-user-drag:none;webkit-tap-height-color:rgba(0,0,0,0);",data-interval="3000",data-ride="carousel")
+				ol.carousel-indicators
+					li.active(data-target="#carousel-example-generic",data-slide-to="0")
+					li(data-target="#carousel-example-generic",data-slide-to="1")
+					li(data-target="#carousel-example-generic",data-slide-to="2")
+					li(data-target="#carousel-example-generic",data-slide-to="3")
+				.carousel-inner(role="listbox")
+					.item.active
+						a(href="work.html",target="_blank",title="")
+							img.img-responsive(src="../../share/demo/u0.jpg",alt="")
+						p.sr-only 圈子简介
+					.item
+						a(href="work.html",target="_blank",title="")
+							img.img-responsive(src="../../share/demo/u0.jpg",alt="")
+						p.sr-only 圈子简介
+					.item
+						a(href="work.html",target="_blank",title="")
+							img.img-responsive(src="../../share/demo/u0.jpg",alt="")
+					.item
+						a(href="work.html",target="_blank",title="")
+							img.img-responsive(src="../../share/demo/u0.jpg",alt="")
+						p.sr-only 圈子简介
+				a.carousel-control.left(href="#carousel-example-generic",data-slide="prev",title="")
+					i.di-chevron-thin-left.icons
+						span.sr-only 向前
+				a.carousel-control.right(href="#carousel-example-generic",data-slide="next",title="")
+					i.di-chevron-thin-right.icons
+						span.sr-only 向后
+	.container.screening
+		include _screening
+	.container
+		.works-column.1th-floor
+			.column-head.clearfix
+				i.di-megaphone.icons
+				h2 推荐作品
+			.works-content
+				.row
+					-var column_num=['col-xs-6','col-sm-4','col-md-2'];
+					-var works_link='work.html';
+					-var works_title='高考恋爱100天-同人创作一生挚爱罗晓涵';
+					-var img_classes=['img-responsive'];
+					-var img_src='../../share/demo/works-cover.jpg';
+					-var plays_num='233';
+					-var thumbs_num='233';
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+					+work_box
+	.container
+		.rank.column
+			.row
+				.col-xs-12.col-md-6
+					.recent
+						.column-head.clearfix
+							i.di-stats-bars.icons
+							h2.pull-left 近期排行
+							ul#myTab.list-inline.pull-right
+								li.active
+									a.tab-btn(href="#week",data-toggle="tab") 本周
+								li
+									a.tab-btn(href="#mouth",data-toggle="tab") 本月
+						#myTabContent.tab-content
+								ul#week.tab-pane.active.panel-group
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 1
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 119
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 1195
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11956
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+								ul#mouth.tab-pane.panel-group
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11956
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11956
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11956
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11956
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+									li.panel
+										.title
+											span 1
+											a.work-name(href="work.html",title="")
+												h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+											.zan-num.pull-left
+												i.di-like.icons.pull-left
+													span.sr-only 点赞数
+												span.pull-left 11956
+										.work-info.collapse.panel-body.hidden-xs
+											a(href!=works_link,title!=works_title)
+												.row
+													.col-md-4.col-xs-5
+														img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+													.col-md-8.col-xs-7
+														p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+				.col-xs-12.col-md-6
+					.total
+						.column-head.clearfix
+							i.di-stats-bars.icons
+							h2 总排行
+						ul#total.tab-pane.panel-group
+							li.panel
+								.title
+									span 1
+									a.work-name(href="work.html",title="")
+										h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+									.zan-num.pull-left
+										i.di-like.icons.pull-left
+											span.sr-only 点赞数
+										span.pull-left 11956
+								.work-info.collapse.panel-body.hidden-xs
+									a(href!=works_link,title!=works_title)
+										.row
+											.col-md-4.col-xs-5
+												img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+											.col-md-8.col-xs-7
+												p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+							li.panel
+								.title
+									span 1
+									a.work-name(href="work.html",title="")
+										h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+									.zan-num.pull-left
+										i.di-like.icons.pull-left
+											span.sr-only 点赞数
+										span.pull-left 11956
+								.work-info.collapse.panel-body.hidden-xs
+									a(href!=works_link,title!=works_title)
+										.row
+											.col-md-4.col-xs-5
+												img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+											.col-md-8.col-xs-7
+												p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+							li.panel
+								.title
+									span 1
+									a.work-name(href="work.html",title="")
+										h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+									.zan-num.pull-left
+										i.di-like.icons.pull-left
+											span.sr-only 点赞数
+										span.pull-left 11956
+								.work-info.collapse.panel-body.hidden-xs
+									a(href!=works_link,title!=works_title)
+										.row
+											.col-md-4.col-xs-5
+												img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+											.col-md-8.col-xs-7
+												p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+							li.panel
+								.title
+									span 1
+									a.work-name(href="work.html",title="")
+										h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+									.zan-num.pull-left
+										i.di-like.icons.pull-left
+											span.sr-only 点赞数
+										span.pull-left 11956
+								.work-info.collapse.panel-body.hidden-xs
+									a(href!=works_link,title!=works_title)
+										.row
+											.col-md-4.col-xs-5
+												img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+											.col-md-8.col-xs-7
+												p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+							li.panel
+								.title
+									span 1
+									a.work-name(href="work.html",title="")
+										h3.ellipsis 高考恋一百天《夏色的风信子》第五部分
+									.zan-num.pull-left
+										i.di-like.icons.pull-left
+											span.sr-only 点赞数
+										span.pull-left 11956
+								.work-info.collapse.panel-body.hidden-xs
+									a(href!=works_link,title!=works_title)
+										.row
+											.col-md-4.col-xs-5
+												img.works-cover.img-responsive(src="../../share/demo/banner-2.jpg",alt="")
+											.col-md-8.col-xs-7
+												p.content.work-dec 作品简介: 一个简单的关于“定义选择”和“随机数据“的搞笑教学篇。具体文本写法，请参考网站命令手册。
+	.container
+		.circle.column
+			//- 同人堂
+			.column-head.clearfix
+				i.di-vinyl.icons
+				h2 发现圈子
+				a.more.pull-right(href="circle-list.html",target="_blank") 更多>
+			.circle-content
+				.row
+					.col-xs-6.col-md-2.col-sm-4
+						.circle-cover
+							a(href="circle-list.html",target="_blank")
+								img.img-circle.img-responsive(src="../../share/demo/u723.png",alt="")
+								.fade-mask 高考恋爱100天带我们回味了那段青春时光，你一定也有自己的故事，加入圈子可用高考恋爱100天官方授权素材
+								a.circle-title(title="")
+									h3.ellipsis 高考恋爱100天
+									h4.circle-number 成员 12345
+							.circle-badge 官方
+							p.sr-only 圈子简介
+					.col-xs-6.col-md-2.col-sm-4
+						.circle-cover
+							a(href="circle-list.html",target="_blank")
+								img.img-circle.img-responsive(src="../../share/demo/circle-4.png",alt="")
+								.fade-mask 高考恋爱100天带我们回味了那段青春时光，你一定也有自己的故事，加入圈子可用高考恋爱100天官方授权素材
+								a.circle-title(title="")
+									h3.ellipsis 高考恋爱100天
+									h4.circle-number 成员 12345
+							.circle-badge 官方
+							p.sr-only 圈子简介
+					.col-xs-6.col-md-2.col-sm-4
+						.circle-cover
+							a(href="circle-list.html",target="_blank")
+								img.img-circle.img-responsive(src="../../share/demo/circle-3.png",alt="")
+								.fade-mask 高考恋爱100天带我们回味了那段青春时光，你一定也有自己的故事，加入圈子可用高考恋爱100天官方授权素材
+								a.circle-title(title="")
+									h3.ellipsis 高考恋爱100天
+									h4.circle-number 成员 12345
+							.circle-badge 官方
+							p.sr-only 圈子简介
+					.col-xs-6.col-md-2.col-sm-4
+						.circle-cover
+							a(href="circle-list.html",target="_blank")
+								img.img-circle.img-responsive(src="../../share/demo/circle-2.png",alt="")
+								.fade-mask 高考恋爱100天带我们回味了那段青春时光，你一定也有自己的故事，加入圈子可用高考恋爱100天官方授权素材
+								a.circle-title(title="")
+									h3.ellipsis 高考恋爱100天
+									h4.circle-number 成员 12345
+							.circle-badge 官方
+							p.sr-only 圈子简介
+					.col-xs-6.col-md-2.col-sm-4
+						.circle-cover
+							a(href="circle-list.html",target="_blank")
+								img.img-circle.img-responsive(src="../../share/demo/circle-1.png",alt="")
+								.fade-mask 高考恋爱100天带我们回味了那段青春时光，你一定也有自己的故事，加入圈子可用高考恋爱100天官方授权素材
+								a.circle-title(title="")
+									h3.ellipsis 高考恋爱100天
+									h4.circle-number 成员 12345
+							.circle-badge 官方
+							p.sr-only 圈子简介
+					.col-xs-6.col-md-2.col-sm-4
+						.circle-cover
+							a(href="circle-list.html",target="_blank")
+								img.img-circle.img-responsive(src="../../share/demo/u961.png",alt="")
+								.di-plus.icons
+								a.circle-title(title="")
+									h3.ellipsis 更多圈子
+							p.sr-only 更多圈子
+	.container
+		.works-column.2th-floor
+			.column-head.clearfix
+				i.di-paperplane.icons
+				h2 最新作品
+				a.more.pull-right(href="circle-list.html",target="_blank") 更多>
+			.works-content
+					.row
+						-var column_num=['col-xs-6','col-sm-4','col-md-2'];
+						-var works_link='work.html';
+						-var works_title='高考恋爱100天-同人创作一生挚爱罗晓涵';
+						-var img_classes=['img-responsive'];
+						-var img_src='../../share/demo/works-cover.jpg';
+						-var plays_num='233';
+						-var thumbs_num='233';
+						+work_box
+						+work_box
+						+work_box
+						+work_box
+						+work_box
+						+work_box
+	.container
+		.bigine.column
+			.column-head.clearfix
+				i.di-pen2.icons
+				h2 大好的引擎
+			.row
+				.col-xs-12.col-md-6
+					a.block.block-1(href="",title="")
+						img.img-responsive(src="../../share/demo/bigine-1.jpg",alt="")
+				.col-xs-12.col-md-6
+					a.block.block-1(href="",title="")
+						img.img-responsive(src="../../share/demo/bigine-2.jpg",alt="")
+				.col-xs-12.col-md-6
+					a.block.block-1(href="",title="")
+						img.img-responsive(src="../../share/demo/bigine-3.jpg",alt="")
+				.col-xs-12.col-md-6
+					a.block.block-1(href="",title="")
+						img.img-responsive(src="../../share/demo/bigine-4.jpg",alt="")
+	.container
+		.row.partners-news
+			.col-xs-12.col-md-6
+				.partners.column
+					.column-head.clearfix
+						h2(style="background-image:url(http://s.dahao.de/img/news/partner.png)") 合作伙伴
+					.links.row
+						//- a(href="http://www.kanshu.com",title="看书网",target="_blank") 看书网
+						a.col-md-2.col-xs-4(href="http://manhua.weibo.com",title="微漫画",target="_blank") 微漫画
+						a.col-md-2.col-xs-4(href="http://comic.sina.com.cn",title="新浪动漫",target="_blank") 新浪动漫
+						//- a(href="http://www.feiku.com/",title="飞库网",target="_blank") 飞库网
+						a.col-md-2.col-xs-4(href="http://www.ishangman.com/",title="i尚漫",target="_blank") i尚漫
+						a.col-md-2.col-xs-4(href="http://www.cngal.org/",title="CnGal中文gagame资料站",target="_blank") CnGal
+						a.col-md-2.col-xs-4(href="http://www.nvlmaker.net/links.html",title="NVLMaker",target="_blank") NVLMaker
+						a.col-md-2.col-xs-4(href="http://www.51macf.com",title="玛奇动漫",target="_blank") 玛奇动漫
+						a.col-md-2.col-xs-4(href="http://www.kuman.com/",title="酷漫网",target="_blank") 酷漫网
+						a.col-md-2.col-xs-4(href="http://www.52tian.net/",title="动画片大全",target="_blank") 动画片大全
+			.col-xs-12.col-md-6
+				.news.column
+					.column-head.clearfix
+						h2(style="background-image:url(http://s.dahao.de/img/news/news.png)") 站内新闻
+					.news-content
+						a.news-title 大好定制素材专区牛逼轰轰的上线啦！点我！点我！
+						.catalogue
+							.item
+								span.tag.news-tag-issue
+								a.news-text(href="",alt="Dahao.de成为国内第一大互动阅读平台！！！Dahao.de成为国内第一大互动阅读平台！！！") Dahao.de成为国内第一大互动阅读平台！！！Dahao.de成为国内第一大互动阅读平台！！！
+								span.news-date 2016-10-21
+							.item
+								span.tag.news-tag-author
+								a.news-text(href="",alt="Dahao.de成为国内第一大互动阅读平台！！！Dahao.de成为国内第一大互动阅读平台！！！") Dahao.de成为国内第一大互动阅读平台！！！Dahao.de成为国内第一大互动阅读平台！！！
+								span.news-date 1/1
+							.item
+								span.tag.news-tag-notice
+								a.news-text(href="",alt="Dahao.de成为国内第一大互动阅读平台！！！Dahao.de成为国内第一大互动阅读平台！！！") Dahao.de成为国内第一大互动阅读平台！！！Dahao.de成为国内第一大互动阅读平台！！！
+								span.news-date 1/1
+						.news-more
+							a >>更多
+block script
+	script(src="../../include/jquery-2.1.4/jquery.min.js")
+	script(src="../../include/bootstrap-3.3.5/js/bootstrap.min.js")
+	script(src="../js/pendant.js")

@@ -1,0 +1,20 @@
+block variables
+	- var PAGE_TITLE = ''; // 页面标题
+	- var PAGE_MODIFIERS = ''; // 页面标识符
+	- var scroll_data_spy = ''; // 滚动监听属性
+	- var data_target = ''; // 滚动监听标识符
+	- var page_style = '';
+include _mixins
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="x-ua-compatible", content="ie=edge")
+		meta(http-equiv="content-type", content="text/html; charset=utf-8")
+		block static
+		title #{PAGE_TITLE} - 大好网站
+		link(rel="dahao-icon",href="#",title="dahao")
+		block css
+	body(class=PAGE_MODIFIERS,data-spy=scroll_data_spy,data-target=data_target,style=page_style)
+		block body
+		block script
